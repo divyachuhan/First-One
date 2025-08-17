@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: lightpink;  
+}
+.container {
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  background: lightpink;
+  margin-bottom: 20px; /* space between form and loading text */
+}
+
+.loading {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+}

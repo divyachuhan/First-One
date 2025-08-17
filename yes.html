@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Remember Me Page</title>
+<link rel="stylesheet" href="yes.css" />
+</head>
+<body>
+<body>
+  <div class="container">
+    <h2>What's your name btw?</h2>
+    <div class="form-group">
+      <input type="text" id="nameInput" placeholder="Enter your name">
+      <br>
+      <button id="saveBtn">Submit</button>
+    </div>
+  </div>
+
+  
+</body>
+
+
+
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbxSeDUB6CiYnlh_7dqfy9BBiAI-k8fGoiT0UnnTuhMPpqn0v0ubMSHjFLQuuXp6ui9z/exec"; // From Google Apps Script
+let userID = "12345"; // Replace or generate dynamicAKfycbxSeDUB6CiYnlh_7dqfy9BBiAIally
+
+async function checkName() {
+  const res = await fetch(`${scriptURL}?action=getName&id=${userID}`);
+  const name = await res.text();
+  if (name) {
+    window.location.href = "main.html"; 
+  } else {
+    document.getElementById("greeting").innerText = "What's your name?";
+  }
+}
+
+document.getElementById("saveBtn").addEventListener("click", () => {
+  const name = document.getElementById("nameInput").value.trim();
+  if (name) {
+    // Redirect immediately
+    window.location.href = "main.html";
+
+    // Save in background (don't wait)
+    fetch(`${scriptURL}?action=saveName&name=${encodeURIComponent(name)}&id=${userID}`);
+  }
+});
+
+checkName();
+</script>
+</body>
+</html>
